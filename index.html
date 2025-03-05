@@ -390,7 +390,7 @@ max-width: 100px;
             </td>
             <td>
                 <button style="background-color: green; color: white;" onclick="sendWhatsApp('${row.phone}', '${message}')">Send WhatsApp</button>
-                
+                <button style="background-color: green; color: white;" onclick="sendWhatsApp1('${row.assign}', '${message}')"> Msg to assignee</button>
             </td>
         </tr>
     `;
@@ -404,6 +404,36 @@ max-width: 100px;
         console.error("Error fetching data:", error);
         alert("Error fetching data: " + error.message);
     });
+}
+const phoneDirectory = {
+    "RAJU": "9885433432",
+    "ABHIGNA": "9182338327",
+    "Alice Brown": "9381536952"
+    // Add more names and phone numbers as needed
+};
+
+function sendWhatsApp1(assign, message) {
+    if (!assign || !message) {
+        alert("Assigned person or message is missing!");
+        return;
+    }
+
+    // Get phone number from the mapping
+    const phoneNumber = phoneDirectory[assign];
+
+    if (!phoneNumber) {
+        alert(`Phone number not found for ${assign}`);
+        return;
+    }
+
+    // Encode the message for URL safety
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Construct WhatsApp URL
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    // Open WhatsApp in a new tab
+    window.open(whatsappURL, '_blank');
 }
 
 function getWhatsAppMessage(name, phone, work, status, remark) {
