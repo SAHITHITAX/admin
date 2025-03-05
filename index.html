@@ -437,11 +437,9 @@ function sendWhatsApp1(assign, status) {
         return;
     }
 
-    // Replace `{name}` placeholder with the actual assigned person's name
-    const personalizedMessage = ;
 
     // Encode message for URL safety
-    const encodedMessage = encodeURIComponent(hi);
+    const encodedMessage = encodeURIComponent('hi');
 
     // Construct WhatsApp URL
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
