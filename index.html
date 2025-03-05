@@ -408,46 +408,41 @@ max-width: 100px;
 const phoneDirectory = {
     "RAJU": "9885433432",
     "ABHIGNA": "9182338327",
-    "ALICE BROWN": "9381536952"
+    "Alice Brown": "9381536952"
     // Add more names and phone numbers as needed
 };
+// Custom messages based on work status
+const statusMessages = {
+    "PENDING": "Hello, your task is still pending. Please update the status as soon as possible.",
+    "NEW": "Hello, You have a new assignment!",
+    "Completed": "Hello, great job! Your task has been marked as completed.",
+    "Delayed": "Hello, there seems to be a delay in your task. Let us know if you need assistance."
+};
 
-// Custom messages with placeholders
 
-
-function sendWhatsApp1(assign, status) {
-    if (!assign || !status) {
-        alert("Assigned person or status is missing!");
+function sendWhatsApp1(assign, message) {
+    if (!assign || !message) {
+        alert("Assigned person or message is missing!");
         return;
     }
 
-    // Normalize case to match stored names (convert input to uppercase)
-    const formattedAssign = assign.toUpperCase();
-    const phoneNumber = phoneDirectory[formattedAssign];
+    // Get phone number from the mapping
+    const phoneNumber = phoneDirectory[assign];
 
     if (!phoneNumber) {
         alert(`Phone number not found for ${assign}`);
         return;
     }
 
-    // Check if the status exists in predefined messages
-    const messageTemplate = statusMessages[status.toUpperCase()];
-    if (!messageTemplate) {
-        alert(`Invalid status: ${status}`);
-        return;
-    }
-
-
-    // Encode message for URL safety
-    const encodedMessage = encodeURIComponent('hi');
-
+    // Encode the message for URL safety
+    const encodedMessage = encodeURIComponent(message);
+    
     // Construct WhatsApp URL
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
     // Open WhatsApp in a new tab
     window.open(whatsappURL, '_blank');
 }
-
 
 function getWhatsAppMessage(name, phone, work, status, remark) {
     name = name || "Customer";
