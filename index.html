@@ -413,12 +413,7 @@ const phoneDirectory = {
 };
 
 // Custom messages with placeholders
-const statusMessages = {
-    "PENDING": "Hello {name}, your task is still pending. Please update the status as soon as possible.",
-    "NEW": "Hello {name}, you have a new assignment!",
-    "COMPLETED": "Hello {name}, great job! Your task has been marked as completed.",
-    "DELAYED": "Hello {name}, there seems to be a delay in your task. Let us know if you need assistance."
-};
+
 
 function sendWhatsApp1(assign, status) {
     if (!assign || !status) {
@@ -443,10 +438,10 @@ function sendWhatsApp1(assign, status) {
     }
 
     // Replace `{name}` placeholder with the actual assigned person's name
-    const personalizedMessage = messageTemplate.replace("{name}", assign);
+    const personalizedMessage = ;
 
     // Encode message for URL safety
-    const encodedMessage = encodeURIComponent(personalizedMessage);
+    const encodedMessage = encodeURIComponent(hi);
 
     // Construct WhatsApp URL
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
