@@ -408,41 +408,53 @@ max-width: 100px;
 const phoneDirectory = {
     "RAJU": "9885433432",
     "ABHIGNA": "9182338327",
-    "Alice Brown": "9381536952"
+    "ALICE BROWN": "9381536952"
     // Add more names and phone numbers as needed
 };
-// Custom messages based on work status
+
+// Custom messages with placeholders
 const statusMessages = {
-    "PENDING": "Hello, your task is still pending. Please update the status as soon as possible.",
-    "NEW": "Hello, You have a new assignment!",
-    "Completed": "Hello, great job! Your task has been marked as completed.",
-    "Delayed": "Hello, there seems to be a delay in your task. Let us know if you need assistance."
+    "PENDING": "Hello {name}, your task is still pending. Please update the status as soon as possible.",
+    "NEW": "Hello {name}, you have a new assignment!",
+    "COMPLETED": "Hello {name}, great job! Your task has been marked as completed.",
+    "DELAYED": "Hello {name}, there seems to be a delay in your task. Let us know if you need assistance."
 };
 
-
-function sendWhatsApp1(assign, message) {
-    if (!assign || !message) {
-        alert("Assigned person or message is missing!");
+function sendWhatsApp1(assign, status) {
+    if (!assign || !status) {
+        alert("Assigned person or status is missing!");
         return;
     }
 
-    // Get phone number from the mapping
-    const phoneNumber = phoneDirectory[assign];
+    // Normalize case to match stored names (convert input to uppercase)
+    const formattedAssign = assign.toUpperCase();
+    const phoneNumber = phoneDirectory[formattedAssign];
 
     if (!phoneNumber) {
         alert(`Phone number not found for ${assign}`);
         return;
     }
 
-    // Encode the message for URL safety
-    const encodedMessage = encodeURIComponent(message);
-    
+    // Check if the status exists in predefined messages
+    const messageTemplate = statusMessages[status.toUpperCase()];
+    if (!messageTemplate) {
+        alert(`Invalid status: ${status}`);
+        return;
+    }
+
+    // Replace `{name}` placeholder with the actual assigned person's name
+    const personalizedMessage = messageTemplate.replace("{name}", assign);
+
+    // Encode message for URL safety
+    const encodedMessage = encodeURIComponent(personalizedMessage);
+
     // Construct WhatsApp URL
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
     // Open WhatsApp in a new tab
     window.open(whatsappURL, '_blank');
 }
+
 
 function getWhatsAppMessage(name, phone, work, status, remark) {
     name = name || "Customer";
