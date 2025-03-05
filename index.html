@@ -411,8 +411,16 @@ const phoneDirectory = {
     "Alice Brown": "9381536952"
     // Add more names and phone numbers as needed
 };
+// Custom messages based on work status
+const statusMessages = {
+    "PENDING": "Hello, your task is still pending. Please update the status as soon as possible.",
+    "NEW": "Hello, You have a new assignment!",
+    "Completed": "Hello, great job! Your task has been marked as completed.",
+    "Delayed": "Hello, there seems to be a delay in your task. Let us know if you need assistance."
+};
 
-function sendWhatsApp1(assign, message1) {
+
+function sendWhatsApp1(assign, message) {
     if (!assign || !message) {
         alert("Assigned person or message is missing!");
         return;
@@ -436,33 +444,6 @@ function sendWhatsApp1(assign, message1) {
     window.open(whatsappURL, '_blank');
 }
 
-function getWhatsAppMessage1(name, phone, work, status, remark) {
-    name = name || "Customer";
-    work = work || "your task";
-    remark = remark ? String(remark).trim() : "0";  // Ensure it's treated as a string.
-
-    switch (status) {
-        case "NEW":
-            return `You have a new Assignemnt of  ${name}with regard to ${work} work.`;
-        case "New":
-            return `Hi ${name}, please send me details regarding pending ${work} work.`;
-
-        case "PENDING":
-            return `Hi ${name}, just a reminder regarding your pending ${work}.`;
-        case "DONE":
-            return `Hi ${name}, your ${work} work has been completed successfully. Please give us a rating: https://www.justdial.com/Rangareddy/Sahithi-Tax-Consultancy-Near-Gram-Panchayat-Hayath-Nagar/040PXX40-XX40-240128082904-G1Z7_BZDET/writereview?city=Rangareddy`;
-        case "WAIT":
-            return `Hi ${name}, reminder regarding your pending ${work} work.`;
-        case "CALL":
-            return `Hi ${name}, please call me regarding your ${work} work.`;
-        case "INTIMATED":
-            return `Hi ${name}, a gentle reminder regarding your ${work} work.`;
-        case "BAL":
-            return `Hi ${name}, your ${work} work has been completed successfully. An amount of Rs ${remark} is pending with regard to your work.`;
-        default:
-            return `Hi ${name}, please get in touch with us regarding ${work}.`;
-    }
-}
 function getWhatsAppMessage(name, phone, work, status, remark) {
     name = name || "Customer";
     work = work || "your task";
