@@ -238,6 +238,7 @@ max-width: 100px;
 	 <button id="openAdminButton" onclick="openAdminSite3()">Open Sahithi Tax RAJU</button>
 	 <button id="openAdminButton" onclick="openAdminSite4()">Open Sahithi Tax ALEKHYA</button>
 	 <button id="openAdminButton" onclick="openAdminSite5()">Open Sahithi Tax SAHITHI</button>
+	  <button id="goBottomBtn" onclick="scrollToBottom()">Go to Bottom</button>
   <script>
        function openAdminSite() {
             window.location.href = 'https://sahithitax.github.io/admin/';
@@ -256,6 +257,9 @@ max-width: 100px;
         }
       function openAdminSite5() {
             window.location.href = 'https://sahithitax.github.io/SAHITHI1/';
+        }
+	  function scrollToBottom() {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
    function submitForm() {
     const form = document.getElementById("workForm");
