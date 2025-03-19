@@ -151,7 +151,29 @@ max-width: 100px;
 
         .whatsapp-btn:hover {
             background-color: #1EBE57;
-   
+	}
+	     .button-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .apple-button {
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 30px;
+            background: linear-gradient(to bottom, #ffffff, #e0e0e0);
+            color: #333;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: none;
+            text-align: center;
+        }
+        .apple-button:hover {
+            background: linear-gradient(to bottom, #e0e0e0, #d0d0d0);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -159,17 +181,19 @@ max-width: 100px;
 
     <div class="form-wrapper">
        <h2>WELCOME TO SAHITHI TAX CONSULTANCY</h2>
-	     <tr>
-            <th><a href="https://sahithitax.github.io/URGENT/">URGENT</a></th>
-            <th><a href="https://sahithitax.github.io/PENDING/">PENDING</a></th>
-            <th><a href="https://sahithitax.github.io/NEW/">NEW</a></th>
-            <th><a href="https://sahithitax.github.io/CALL/">CALL</a></th>
-            <th><a href="https://sahithitax.github.io/BAL/">BAL</a></th>
-            <th><a href="https://sahithitax.github.io/RATING/">RATING</a></th>
-            <th><a href="https://sahithitax.github.io/DOCS/">DOCS</a></th>
-            <th><a href="https://sahithitax.github.io/TOBE/">TO BE</a></th>
-             <th><a href="https://sahithitax.github.io/LBR/">LABOUR REMINDER</a></th>
-             <th><a href="https://sahithitax.github.io/ITR/">ITR REMINDER</a></th>
+<div class="button-container">
+    <a href="https://sahithitax.github.io/URGENT/" class="apple-button">URGENT</a>
+    <a href="https://sahithitax.github.io/PENDING/" class="apple-button">PENDING</a>
+    <a href="https://sahithitax.github.io/NEW/" class="apple-button">NEW</a>
+    <a href="https://sahithitax.github.io/CALL/" class="apple-button">CALL</a>
+    <a href="https://sahithitax.github.io/BAL/" class="apple-button">BAL</a>
+    <a href="https://sahithitax.github.io/RATING/" class="apple-button">RATING</a>
+    <a href="https://sahithitax.github.io/DOCS/" class="apple-button">DOCS</a>
+    <a href="https://sahithitax.github.io/TOBE/" class="apple-button">TO BE</a>
+    <a href="https://sahithitax.github.io/LBR/" class="apple-button">LABOUR REMINDER</a>
+    <a href="https://sahithitax.github.io/ITR/" class="apple-button">ITR REMINDER</a>
+</div>
+
           
         </tr></br>
         <form id="workForm" class="form-container">
